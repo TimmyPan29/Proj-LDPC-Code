@@ -46,7 +46,9 @@ in sparse adjacency form rather than as a dense 1023×1023 matrix.
 ├── data/
 │   ├── ldpc_H_1023.txt # parity-check matrix (sparse adjacency lists)
 │   └── ldpc_G_1023.txt # systematic generator matrix
-├── matlab/             # plotting scripts holding the measured BER/BLER curves
+├── python/             # matplotlib plotting (plot_results.py + requirements.txt)
+├── matlab/             # original MATLAB plotting scripts (same data)
+├── figures/            # rendered BER/BLER curves (embedded below)
 ├── docs/               # project report (PDF)
 └── Makefile
 ```
@@ -91,9 +93,27 @@ characteristic LDPC *waterfall*:
 | 3.0        | 1.3×10⁻³ | 2.5×10⁻² |
 | 4.0        | < 10⁻⁵   | < 10⁻³   |
 
-Full BER/BLER curves — SPA at different iteration counts, and MSA across
-different Monte-Carlo confidence targets — are reproduced by the scripts in
-`matlab/` and discussed in the project report under `docs/`.
+### Measured performance curves
+
+The full sweeps from the project are below. **SPA** is shown at several
+iteration caps (more iterations → a sharper waterfall); **MSA** at a fixed 70
+iterations is shown for three Monte-Carlo error-block targets, confirming the
+estimate is stable regardless of how many error blocks are collected.
+
+| | BER | BLER |
+| --- | --- | --- |
+| **SPA** (varying iterations) | ![SPA BER](figures/spa_ber.png) | ![SPA BLER](figures/spa_bler.png) |
+| **MSA** (70 iterations) | ![MSA BER](figures/msa_ber.png) | ![MSA BLER](figures/msa_bler.png) |
+
+Regenerate the figures with either toolchain (both use the same data):
+
+```sh
+pip install -r python/requirements.txt
+python python/plot_results.py        # writes figures/*.png
+```
+
+The original MATLAB scripts in `matlab/` produce the same plots, and the
+experiment is discussed in the project report under `docs/`.
 
 ## How it works
 

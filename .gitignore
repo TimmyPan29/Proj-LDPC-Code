@@ -7,8 +7,14 @@ ldpc_sim
 results/
 *.csv
 
-# generated plots
+# generated plots: ignore stray outputs (e.g. MATLAB saveas in the repo root),
+# but keep the curated result figures under figures/
 *.png
+!figures/*.png
+
+# python virtual environments
+.venv/
+__pycache__/
 
 # OS / editor cruft
 .DS_Store
