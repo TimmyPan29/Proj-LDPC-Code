@@ -1,0 +1,23 @@
+# LDPC simulation configuration  (key = value; '#' starts a comment)
+
+# --- code geometry ---
+code_n      = 1023            # codeword length (variable nodes)
+code_m      = 781             # information length
+row_weight  = 32              # 1's per row of H    (check-node degree)
+col_weight  = 32              # 1's per column of H  (variable-node degree)
+h_file      = data/ldpc_H_1023.txt
+g_file      = data/ldpc_G_1023.txt
+
+# --- decoding ---
+algorithm   = MSA             # SPA (sum-product) or MSA (min-sum)
+max_iter    = 70              # max BP iterations per block
+
+# --- channel sweep (Eb/N0 in dB) ---
+snr_start   = 1.4
+snr_step    = 0.2
+snr_points  = 1
+
+# --- Monte-Carlo control ---
+target_errors = 100           # collect this many block errors per SNR point
+seed          = -2189         # ran1 seed (negative integer)
+output_dir    = results
