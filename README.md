@@ -1,5 +1,12 @@
 # LDPC (1023, 781) Decoder & AWGN Simulator
 
+![language: C11](https://img.shields.io/badge/language-C11-blue.svg)
+[![license: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+![code: (1023, 781)](https://img.shields.io/badge/code-(1023%2C%20781)-orange.svg)
+
+> Hand-written sum-product / min-sum LDPC decoder in C, with an AWGN
+> Monte-Carlo simulator that reproduces the code's BER/BLER waterfall.
+
 A from-scratch C implementation of an iterative **Low-Density Parity-Check (LDPC)**
 decoder, with a Monte-Carlo simulator that measures bit-error rate (BER) and
 block-error rate (BLER) over an AWGN channel. Built for a graduate
