@@ -53,6 +53,7 @@ in sparse adjacency form rather than as a dense 1023×1023 matrix.
 ├── data/
 │   ├── ldpc_H_1023.txt # parity-check matrix (sparse adjacency lists)
 │   └── ldpc_G_1023.txt # systematic generator matrix
+├── tests/selftest.c    # correctness checks (make test)
 ├── python/             # matplotlib plotting (plot_results.py + requirements.txt)
 ├── matlab/             # original MATLAB plotting scripts (same data)
 ├── figures/            # rendered BER/BLER curves (embedded below)
@@ -65,12 +66,18 @@ in sparse adjacency form rather than as a dense 1023×1023 matrix.
 ```sh
 make            # builds ./ldpc_sim
 make run        # builds, then runs with config/sim.txt
+make test       # builds and runs the correctness self-test
 ./ldpc_sim config/sim.txt
 ```
 
 Results are printed to the console and written to
 `results/results_<ALGO>.csv` (columns: `snr_db, blocks, error_blocks,
 error_bits, ber, bler`).
+
+`make test` runs `tests/selftest.c`, which checks the core invariants:
+encoded words satisfy `H·c = 0`, clean LLRs decode in one iteration, the SPA
+corrects deliberately corrupted LLRs, and the full encode → AWGN → decode
+pipeline is error-free at high Eb/N0.
 
 ## Configuration
 

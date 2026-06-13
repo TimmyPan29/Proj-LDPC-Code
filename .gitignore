@@ -2,6 +2,7 @@
 *.o
 *.exe
 ldpc_sim
+tests/selftest
 
 # simulation output
 results/
@@ -20,7 +21,8 @@ __pycache__/
 .DS_Store
 *.swp
 
-# Report PDF is excluded until its INTERNAL text is redacted (real name +
-# student ID still appear inside the file). Regenerate an anonymized version
-# (author = TimmyPan, no student ID), then delete this line and commit it.
+# Report PDF is excluded until it is fully de-identified. Student ID is gone,
+# but the real name still leaks via the per-page footer ("Jyun-Hong Pan") and
+# the PDF /Author metadata. Re-export from the slide source with the footer
+# changed to TimmyPan, then delete this line and commit it.
 docs/LDPC_Project_Report.pdf
